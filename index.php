@@ -1,13 +1,12 @@
 <?php
 
+require 'emailAddress.php';
+require 'emailAccountPw.php';
+
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-$email = "";
-$username = ""; 
 
 //Load Composer's autoloader
 require 'vendor/autoload.php';
@@ -24,11 +23,11 @@ $mail = new PHPMailer(true);
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     // $mail->Username   = 'email address';                     //SMTP username
 
-    $mail->Username   = $username; 
+    $mail->Username   = $email; 
 
     // $mail->Password   = '';                               //SMTP password
 
-    $mail->Password   = ''; 
+    $mail->Password   = $accountPw; 
 
     // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
 
@@ -39,10 +38,10 @@ $mail = new PHPMailer(true);
     $mail->Port       = 587; 
 
     //Recipients
-    $mail->setFrom('', 'MC');
+    $mail->setFrom($email, 'MC');
     $mail->addAddress($email, 'MC');     //Add a recipient
     // $mail->addAddress();               //Name is optional
-    $mail->addReplyTo('', 'Information');
+    $mail->addReplyTo($email, 'Information');
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
 
@@ -56,9 +55,7 @@ $mail = new PHPMailer(true);
     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     $mail->send();
-    if ($mail->send()) {
-      $sent = 'Message has been sent';
-    }
+    $sent = 'Message has been sent';
    
     
   } catch (Exception $e) {
