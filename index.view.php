@@ -58,6 +58,13 @@
         <?php endforeach ?>
       </ou>
 
+      <div>
+        <h4>Task</h4>
+        <?php foreach ($task as $category => $detail) : ?>
+          <h7><strong><? echo "${category}: "; ?></strong><? echo "${detail}"; ?></h7><br>
+        <?php endforeach; ?>
+      </div>
+
       <?php 
         echo $heading; 
         echo '<a href="mailto:' . $email . '?subject= &body=%0D%0AWelcome to  the site that prints out legal forms for FREE. Check out www..com %0D%0AAt  we believe everyone should have access to free customizable legal documents. 

@@ -51,20 +51,19 @@ $mail = new PHPMailer(true);
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Subject = 'EFreeDocs';
+    $mail->Body    = 'Welcome to  the site that prints out legal forms for FREE. Check out www..com <br> At  we believe everyone should have access to free customizable legal documents. <br> Come check out our site today!<br> © Copyrighted 2021  tm';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     $mail->send();
-    $sent = 'Message has been sent';
+    $sent = 'An email confirmation has been sent';
    
     
   } catch (Exception $e) {
-    $notSent = "Message could not be sent."; 
+    $notSent = "Email could not be validated."; 
     $error =  "Mailer Error:" . $mail->ErrorInfo;
    
   }
 }
-
 
 $animals = [
   "bulls",
@@ -82,7 +81,14 @@ $person = [
 ];
 
 $person['residence'] = 'Springfield, MA';
+unset($person['age']);
 
+$task = [
+  'title' => 'Meet with manager',
+  'due' => '1:00 pm',
+  'assigned to' => 'employee',
+  'completed' => 'no'
+];
 
 $to = "";
 $subject = "";
