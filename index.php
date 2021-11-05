@@ -2,12 +2,13 @@
 
 require 'emailAddress.php';
 require 'emailAccountPw.php';
+require 'functions.php';
 
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-
+$sendTo = 'kidsinactionclub@gmail.com';
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 if (isset($_GET['name'])) {
@@ -23,7 +24,7 @@ $mail = new PHPMailer(true);
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     // $mail->Username   = 'email address';                     //SMTP username
 
-    $mail->Username   = $email; 
+    $mail->Username   = $emailA; 
 
     // $mail->Password   = '';                               //SMTP password
 
@@ -38,10 +39,10 @@ $mail = new PHPMailer(true);
     $mail->Port       = 587; 
 
     //Recipients
-    $mail->setFrom($email, 'MC');
-    $mail->addAddress($email, 'MC');     //Add a recipient
+    $mail->setFrom($emailA, 'MC');
+    $mail->addAddress($sendTo, 'MC');     //Add a recipient
     // $mail->addAddress();               //Name is optional
-    $mail->addReplyTo($email, 'Information');
+    $mail->addReplyTo($emailA, 'Information');
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
 
@@ -52,11 +53,29 @@ $mail = new PHPMailer(true);
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'EFreeDocs';
-    $mail->Body    = 'Welcome to  the site that prints out legal forms for FREE. Check out www..com <br> At  we believe everyone should have access to free customizable legal documents. <br> Come check out our site today!<br> © Copyrighted 2021  tm';
+    $mail->Body    = 'Welcome to EFreeDocs the site that prints out legal forms for FREE. Check out www.EFreeDocs.com <br> At EFreeDocs we believe everyone should have access to free customizable legal documents. <br> Come check out our site today!<br> © Copyrighted 2021 EFreeDocs tm';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
     $mail->send();
     $sent = 'An email confirmation has been sent';
    
+    // $sendTo = filter_var($sendTo, FILTER_SANITIZE_EMAIL);
+    
+    // if (filter_var($sendTo, FILTER_VALIDATE_EMAIL)) {
+    //   echo $sendTo;
+    //   $mail->send();
+    //   echo("$sendTo is a valid email address");
+    //   $sent = 'An email confirmation has been sent';
+    // } else {
+    //   $notSent = "Email address is not valid";
+    // }
+    
+    
+    
+    
+    
+    // $vard = var_dump($mail);
+    // echo $vard;
     
   } catch (Exception $e) {
     $notSent = "Email could not be validated."; 
@@ -86,8 +105,8 @@ unset($person['age']);
 $task = [
   'title' => 'Meet with manager',
   'due' => '1:00 pm',
-  'assigned to' => 'employee',
-  'completed' => 'no'
+  'assigned_to' => 'employee',
+  'completed' => false
 ];
 
 $to = "";
@@ -101,5 +120,11 @@ mail($to, $subject, $message, $additional_headers);
 
 $email = htmlspecialChars($_GET['email']);
 
+
+
+// dd($person);
+echo checkLegalAge(15);
+echo checkLegalAge(21);
+echo checkLegalAge(28);
 
 require 'index.view.php';

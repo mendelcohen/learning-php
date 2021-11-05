@@ -59,10 +59,18 @@
       </ou>
 
       <div>
-        <h4>Task</h4>
-        <?php foreach ($task as $category => $detail) : ?>
-          <h7><strong><? echo "${category}: "; ?></strong><? echo "${detail}"; ?></h7><br>
-        <?php endforeach; ?>
+        <h4>Daily Task</h4>
+        <h7><strong>Task: </strong><? echo $task['title']; ?></h7><br>
+        <h7><strong>Due: </strong><? echo $task['due']; ?></h7><br>
+        <h7><strong>Who: </strong><? echo $task['assigned_to']; ?></h7><br>
+        <h7><strong>Status: </strong>
+          <?php if (!$task['completed']) : ?>
+            <span>Incomplete</span>
+          <?php else : ?>
+            <span>&#9989;</span>
+          <?php endif; ?>
+        </h7><br>
+        
       </div>
 
       <?php 
