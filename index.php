@@ -123,8 +123,12 @@ $email = htmlspecialChars($_GET['email']);
 
 
 // dd($person);
-echo checkLegalAge(15);
-echo checkLegalAge(21);
-echo checkLegalAge(28);
+if (isset($_POST['age'])) {
+  $age = $_POST['age'];
+  echo checkLegalAge($age);
+}
+// echo checkLegalAge(15);
+// echo checkLegalAge(21);
+// echo checkLegalAge(28);
 
 require 'index.view.php';

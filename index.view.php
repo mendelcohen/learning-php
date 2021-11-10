@@ -70,7 +70,13 @@
             <span>&#9989;</span>
           <?php endif; ?>
         </h7><br>
-        
+      </div>
+
+      <div>
+        <form action="index.php" method="post">
+        Enter your age: <input type="text" name="age"><br>
+        <input type="submit">
+        </form>
       </div>
 
       <?php 
