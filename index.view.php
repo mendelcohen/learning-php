@@ -23,8 +23,11 @@
         <input type="submit" value="Ok"/>
         
       </form>
-     
-      <a href='index.php?name=true'>Execute PHP Function</a>
+
+      <form method="POST" action="index.php">
+        <input type="submit"  name="email" value="Send Email"/>
+      </form>
+      <!-- <a href='index.php?name=true'>Execute PHP Function</a> -->
       
       <?php echo '<h2>' . $sent . '</h2>'; ?>
       <?php echo '<h2>' . $notSent . '</h2>'; ?>
@@ -77,7 +80,9 @@
         Enter your age: <input type="text" name="age"><br>
         <input type="submit">
         </form>
+        <?php echo $permission ?>
       </div>
+
 
       <?php 
         echo $heading; 

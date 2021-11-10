@@ -8,10 +8,10 @@ require 'functions.php';
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-$sendTo = 'kidsinactionclub@gmail.com';
+$sendTo = 'mmhakohen@gmail.com';
 //Load Composer's autoloader
 require 'vendor/autoload.php';
-if (isset($_GET['name'])) {
+if (isset($_POST['email'])) {
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
@@ -109,23 +109,23 @@ $task = [
   'completed' => false
 ];
 
-$to = "";
-$subject = "";
-$message = "%0D%0AWelcome to  the site that prints out legal forms for FREE. Check out www..com %0D%0AAt  we believe everyone should have access to free customizable legal documents. %0D%0ACome check out our site today!%0D%0A%0D%0A© Copyrighted 2021  tm%0D%0A%0D%0A%0D%0A%0D%0A";
-$additional_headers = 'From: ';
+// $to = "";
+// $subject = "";
+// $message = "%0D%0AWelcome to  the site that prints out legal forms for FREE. Check out www..com %0D%0AAt  we believe everyone should have access to free customizable legal documents. %0D%0ACome check out our site today!%0D%0A%0D%0A© Copyrighted 2021  tm%0D%0A%0D%0A%0D%0A%0D%0A";
+// $additional_headers = 'From: ';
 // string $additional_params = ""
-mail($to, $subject, $message, $additional_headers);
+// mail($to, $subject, $message, $additional_headers);
 
 // $heading = "Send Email Here";
 
-$email = htmlspecialChars($_GET['email']);
+// $email = htmlspecialChars($_GET['email']);
 
 
 
 // dd($person);
 if (isset($_POST['age'])) {
   $age = $_POST['age'];
-  echo checkLegalAge($age);
+  $permission = checkLegalAge($age);
 }
 // echo checkLegalAge(15);
 // echo checkLegalAge(21);
