@@ -77,10 +77,9 @@
 
       <div>
         <form action="index.php" method="post">
-        Enter your age: <input type="text" name="age"><br>
-        <input type="submit">
+        Enter your age: <input type="text" name="age"><input type="submit" value="&#10145;">
         </form>
-        <?php echo $permission ?>
+        <?php echo '<strong>' . $permission . '<strong>' ?>
       </div>
 
 

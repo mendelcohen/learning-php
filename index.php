@@ -8,7 +8,7 @@ require 'functions.php';
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-$sendTo = 'mmhakohen@gmail.com';
+$sendTo = $emailA;
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 if (isset($_POST['email'])) {
@@ -124,11 +124,41 @@ $task = [
 
 // dd($person);
 if (isset($_POST['age'])) {
-  $age = $_POST['age'];
-  $permission = checkLegalAge($age);
+  if ($_POST['age'] === "") {
+    $permission = "Enter a valid age";
+  } else {
+    $permission = checkLegalAge($_POST['age']);
+  }
+  
 }
 // echo checkLegalAge(15);
 // echo checkLegalAge(21);
 // echo checkLegalAge(28);
 
+class Task {
+protected $description;
+
+protected $completed = false;
+
+  public function __construct ($description)
+  {
+    $this->description = $description;
+  }
+
+  public function complete()
+  {
+    $this->$completed = true;
+  }
+
+  public function isComplete()
+  {
+    return $this->$completed;
+  }
+}
+
+$task = new Task('Go to the store');
+
+$task->complete();
+
+var_dump($task->isComplete());
 require 'index.view.php';
