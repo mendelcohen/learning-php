@@ -102,7 +102,7 @@ $person = [
 $person['residence'] = 'Springfield, MA';
 unset($person['age']);
 
-$task = [
+$todo = [
   'title' => 'Meet with manager',
   'due' => '1:00 pm',
   'assigned_to' => 'employee',

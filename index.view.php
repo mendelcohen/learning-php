@@ -63,11 +63,11 @@
 
       <div>
         <h4>Daily Task</h4>
-        <h7><strong>Task: </strong><? echo $task['title']; ?></h7><br>
-        <h7><strong>Due: </strong><? echo $task['due']; ?></h7><br>
-        <h7><strong>Who: </strong><? echo $task['assigned_to']; ?></h7><br>
+        <h7><strong>Task: </strong><? echo $todo['title']; ?></h7><br>
+        <h7><strong>Due: </strong><? echo $todo['due']; ?></h7><br>
+        <h7><strong>Who: </strong><? echo $todo['assigned_to']; ?></h7><br>
         <h7><strong>Status: </strong>
-          <?php if (!$task['completed']) : ?>
+          <?php if (!$todo['completed']) : ?>
             <span>Incomplete</span>
           <?php else : ?>
             <span>&#9989;</span>
