@@ -136,9 +136,9 @@ if (isset($_POST['age'])) {
 // echo checkLegalAge(28);
 
 class Task {
-protected $description;
+public $description;
 
-protected $completed = false;
+public $completed = false;
 
   public function __construct ($description)
   {
@@ -158,7 +158,16 @@ protected $completed = false;
 
 $task = new Task('Go to the store');
 
-$task->complete();
+// $task->complete();
 
-var_dump($task->isComplete());
+// var_dump($task->isComplete());
+
+$tasks = [
+  new Task("Learn Chitas"),
+  new Task("Learn Rambam"),
+  new Task("Learn Chassidus")
+];
+$tasks[0]->complete();
+// dd($tasks);
+
 require 'index.view.php';

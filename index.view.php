@@ -75,6 +75,24 @@
         </h7><br>
       </div>
 
+      <br/>
+
+      <div>
+        <ul>
+          <?php foreach ($tasks as $task) : ?>
+            <li>
+              <?php if ($task->completed) : ?>
+                <del><?= $task->description; ?></del>
+              <?php else : ?>
+                <?php echo $task->description; ?>
+              <?php endif; ?>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+
+      <br/>
+
       <div>
         <form action="index.php" method="post">
         Enter your age: <input type="text" name="age"><input type="submit" value="&#10145;">
